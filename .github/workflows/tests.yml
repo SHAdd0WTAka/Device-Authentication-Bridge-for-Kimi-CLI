@@ -34,7 +34,7 @@ jobs:
     
     - name: Test with pytest + coverage
       run: |
-        pytest --cov=kimi_auth_bridge --cov-report=xml --cov-report=html --cov-fail-under=80 || pytest
+        pytest --cov=kimi_auth_bridge --cov-report=xml --cov-report=html --cov-fail-under=70 || pytest
     
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4

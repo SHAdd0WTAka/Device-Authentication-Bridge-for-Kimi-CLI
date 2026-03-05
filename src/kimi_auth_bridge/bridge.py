@@ -240,7 +240,10 @@ class AsyncKimiAuthBridge(KimiAuthBridge):
     
     async def get_auth_headers(self) -> Dict[str, str]:
         """Async version of get_auth_headers"""
-        return super().get_auth_headers()
+        creds = self._load_credentials()
+        if not creds:
+            raise KimiNotAuthenticatedError("Not authenticated. Please run 'kimi login' first.")
+        return {"Authorization": f"Bearer {creds.get('access_token', '')}"}
     
     async def login(self) -> bool:
         """
