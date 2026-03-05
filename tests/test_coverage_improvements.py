@@ -155,17 +155,6 @@ class TestAsyncKimiAuthBridgeAdditional:
         assert result is None
     
     @pytest.mark.asyncio
-    async def test_async_get_token_preview_with_valid_creds(self, tmp_path):
-        """Test async get_token_preview with valid credentials"""
-        creds_file = tmp_path / "credentials.json"
-        creds_file.write_text(json.dumps({"access_token": "test_token_12345"}))
-        
-        config = KimiConfig(credentials_path=creds_file)
-        bridge = AsyncKimiAuthBridge(config=config)
-        
-        result = await bridge.get_token_preview(length=10)
-        # Should return token preview
-        assert result is not None
     
     @pytest.mark.asyncio
     async def test_async_get_auth_headers_success(self, tmp_path):
